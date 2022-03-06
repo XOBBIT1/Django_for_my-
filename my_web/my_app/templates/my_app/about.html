@@ -1,0 +1,21 @@
+{% extends 'my_app/index.html'%}
+{% load static %}
+
+{% block title %}
+{{ title }}
+{% endblock %}
+
+{% block content %}
+    <h1>Даров - это страница про нас</h1>
+    {% for i in image %}
+        <div class="alert alert-warning mt-2">
+            <h2>{{i.title}}</h2>
+            <p>{{i.text}}</p>
+            {% if i.img %}
+                     <ul><img src="{{ i.img.url }}" width="500px" height="400px"></ul>
+            {% else %}
+                     <p></p>
+            {% endif %}`
+        </div>
+    {% endfor %}
+{% endblock %}
