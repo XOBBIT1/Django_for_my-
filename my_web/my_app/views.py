@@ -13,5 +13,3 @@ def about(request):
     return render(request, 'my_app/about.html', {'title': 'Главная страница сайта',
                                                  'image': image})
 
-def subscriptions(request):
-    return  render(request,'my_app/subscriptions.html' )

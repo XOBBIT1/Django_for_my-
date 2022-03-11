@@ -23,7 +23,8 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include("my_app.urls")),
     path('members/', include("django.contrib.auth.urls")),
-    path('members/', include("members.urls"))
+    path('members/', include("members.urls")),
+    path('subscribers/', include("subscribers.urls")),
 ]
 
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -1,0 +1,24 @@
+{% extends 'my_app/index.html'%}
+
+{% block title %}
+Главная страница
+{% endblock %}
+
+{% block content %}
+    <hr>
+    {% if user.is_authenticated %}
+        {% for profile in object_list%}
+          <a href="/about" id="dropdownUser2" data-bs-toggle="dropdown" aria-expanded="false">
+            <img src="{{ profile.image_profile_user.url }}" alt="" width="320" height="320" class="rounded-circle me-2">
+            <strong>
+                    <h1>{{ profile.name}}</h1>
+            </strong>
+          </a>
+          {{profile.text}}
+          <hr>
+        {% endfor %}
+    {% else %}
+        <p> Vsem mira</p>
+    {% endif %}
+    <h1>Даров - это главная страница сайта</h1>
+{% endblock %}

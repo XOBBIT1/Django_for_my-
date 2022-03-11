@@ -1,0 +1,37 @@
+{% extends 'my_app/index.html'%}
+
+{% block title %}
+Подписки
+{% endblock %}
+
+{% block content %}
+        {% if user.is_authenticated %}
+        <h1>Даров - это твои подписки</h1>
+    <div class="alert alert-warning mt-2">
+        <hr>
+            {% for sub in object_list %}
+               <div class="card mb-3" style="max-width: 540px;">
+                  <div class="row g-0">
+                    <div class="col-md-4">
+                      <img src="{{ sub.image_profile.url }}" class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                      <div class="card-body">
+                        <h5 class="card-title">{{ sub.username}}</h5>
+                        <p class="card-text">{{sub.text}}</p>
+                      </div>
+                    </div>
+                  </div>
+               </div>
+            {% endfor %}
+        {% else %}
+             <h1>
+                 Для просмотра подписок вам нужно,
+                  <a href="{% url 'register' %}" class="nav-link px-2 text-white">Зарегестироваться</a>
+                 или
+                 <a href="{% url 'login' %}" class="nav-link px-2 text-white">Войти в систему</a>
+             </h1>
+        {% endif %}
+    </div>
+{% endblock %}
+

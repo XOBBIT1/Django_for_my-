@@ -6,16 +6,28 @@
 {% endblock %}
 
 {% block content %}
-    <h1>Даров - это страница про нас</h1>
-    {% for i in image %}
+    {% if user.is_authenticated %}
+    <h1>Ваши публикации</h1>
+    <hr>
+        {% for i in image %}
+            <div class="alert alert-warning mt-2">
+                <h2>{{i.title}}</h2>
+                <p>{{i.text}}</p>
+                {% if i.img %}
+                         <ul><img src="{{ i.img.url }}" width="500px" height="400px"></ul>
+                {% else %}
+                         <p></p>
+                {% endif %}
+            </div>
+        {% endfor %}
+    {% else %}
         <div class="alert alert-warning mt-2">
-            <h2>{{i.title}}</h2>
-            <p>{{i.text}}</p>
-            {% if i.img %}
-                     <ul><img src="{{ i.img.url }}" width="500px" height="400px"></ul>
-            {% else %}
-                     <p></p>
-            {% endif %}`
+             <h1>
+                 Для просмотра Публикаций вам нужно,
+                  <a href="{% url 'register' %}" class="nav-link px-2 text-white">Зарегестироваться</a>
+                 или
+                 <a href="{% url 'login' %}" class="nav-link px-2 text-white">Войти в систему</a>
+             </h1>
         </div>
-    {% endfor %}
+    {% endif %}
 {% endblock %}
